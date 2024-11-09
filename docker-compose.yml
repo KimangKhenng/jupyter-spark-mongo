@@ -1,0 +1,19 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: juypter
+    volumes:
+      - ./work:/home/jovyan/work
+    ports:
+      - "4000:8888"
+  mongo-spark:
+    image: mongo:8.0.3
+    container_name: mongo-spark
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongodbdata:/data/db
+volumes:
+  mongodbdata:
